@@ -1,0 +1,25 @@
+code_analysis_task:
+  description: "Analyze the provided code {code} to identify individual units (functions, methods, classes) suitable for unit testing. Ensure that the analysis aligns with the conventions and best practices of the specified testing framework {framework}."
+  expected_output: "A comprehensive report detailing each identified unit, including its name, purpose, input parameters, and any dependencies. This report should be saved in 'analysis.md' for reference in subsequent tasks."
+  agent: code_analyzer_agent
+  output_file: analysis.md
+
+
+test_case_generation_task:
+  description: "Develop detailed unit test cases for each code unit identified in 'analysis.md' based on the provided code {code}. Ensure that the test cases are compatible with the {framework} testing framework and cover various scenarios, including typical use cases, edge cases, and potential error conditions."
+  expected_output: "A markdown file ('test_cases.md') containing well-documented test cases for each code unit. Each test case should include a description, input data, expected output, and any setup or teardown procedures."
+  agent: test_case_generator_agent
+  output_file: test_cases.md
+
+
+test_executor_task:
+  description: "Execute the unit test cases outlined in 'test_cases.md' using the {framework} testing framework on the provided code {code}. Record the outcomes of each test, noting any failures or errors encountered during execution."
+  expected_output: "A detailed test execution report summarizing the results of each test case, including pass/fail status, error messages, and logs. This report should provide insights into the overall quality and reliability of the codebase."
+  agent: test_executor_agent
+  output_file: test_result.md
+  
+
+bug_analysis_task:
+  description: "Examine the test execution report to identify and analyze any failed test cases related to the provided code {code}. Determine the root causes of these failures and propose actionable recommendations for code modifications to address the identified issues."
+  expected_output: "A bug analysis report that outlines each failure, its underlying cause, and suggested code changes to resolve the issue. This report should serve as a guide for developers to implement necessary fixes and improve code quality."
+  agent: bug_analyzer_agent
